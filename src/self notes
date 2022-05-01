@@ -1,0 +1,15 @@
+Use State: 
+1. React will remember variables current value between re-renders, and provide the most recent one to our function.If we want to update 
+the current variable, we can call setVariable.
+2. React only renders the component in which that state was registered
+3. If the component in which useState is used is called multiple times, each component will have it's own use state, and stateChange will
+occur for only that component
+4. Objects can also be stored with useState, but while updating, we need to be carefull to update the whole object, otherwise other values
+will get lost
+5. When state change depends on previous state, for example a counter instead of passing a value to the setState function, pass a function 
+instead, React will execute this function and return new state snapshot and use this to update the state. Reason for doing this is React
+schedules state updates it doesn't perform them instantly. So if we schedule multiple state update at same time, we might have wrong 
+previous state theoratically. By using function, react will guarentee that the previous state param contain the latest state. 
+6. If a button of type submit is clicked, it will emit an event which could be listen by the form using onSubmit
+7. When the value and change in value is not present in the component itself rather in a parent component, it is called as controlled component.
+Formal Def: In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
