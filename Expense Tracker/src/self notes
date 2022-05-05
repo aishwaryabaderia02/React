@@ -13,3 +13,6 @@ previous state theoratically. By using function, react will guarentee that the p
 6. If a button of type submit is clicked, it will emit an event which could be listen by the form using onSubmit
 7. When the value and change in value is not present in the component itself rather in a parent component, it is called as controlled component.
 Formal Def: In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+8. Styled Components: generate unique classnames for all the encapsulated css written inside the backticks. CSS writen is not compnent scoped. To limit it's scope we can 
+use styled components.
+9. 
