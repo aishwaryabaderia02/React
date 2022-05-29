@@ -1,0 +1,39 @@
+Use State: 
+1. React will remember variables current value between re-renders, and provide the most recent one to our function.If we want to update 
+the current variable, we can call setVariable.
+2. React only renders the component in which that state was registered
+3. If the component in which useState is used is called multiple times, each component will have it's own use state, and stateChange will
+occur for only that component
+4. Objects can also be stored with useState, but while updating, we need to be carefull to update the whole object, otherwise other values
+will get lost
+5. When state change depends on previous state, for example a counter instead of passing a value to the setState function, pass a function 
+instead, React will execute this function and return new state snapshot and use this to update the state. Reason for doing this is React
+schedules state updates it doesn't perform them instantly. So if we schedule multiple state update at same time, we might have wrong 
+previous state theoratically. By using function, react will guarentee that the previous state param contain the latest state. 
+6. If a button of type submit is clicked, it will emit an event which could be listen by the form using onSubmit
+7. When the value and change in value is not present in the component itself rather in a parent component, it is called as controlled component.
+Formal Def: In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+8. Styled Components: generate unique classnames for all the encapsulated css written inside the backticks. CSS writen is not compnent scoped. To limit it's scope we can 
+use styled components.
+9. React Fragments could be used instead of wrapping divs to make the code less cubersome
+10. React Portals : We need a place to port the component and then we need to let the component know that it should have a portal to that place. In React.createPortal pass the portal and where we want to render the modal, select the root element for that.
+11. useRef: useRef returns an object with a current property. When it is rendered first time, it will store the real dome node. we could use useRef.current.value to read the current value. It is uncontrolled component since we are not controlling it through react component, rather manipulating the dom itself
+12. useEffect: useEffect runs after component evaluation and after it's dependencies have changed.
+We can return a function from useEffect, called the clean up function. This function will run every time use Effect runs except for the first time. It also runs whenever component is removed
+13. useReducer: when the state is very complex, we use useReducer, useReducer is also a state management hook
+    a. setting one state based on another state might lead to race condition problems. So we use use reducer for managing complex states
+    b. just like useState useReducer also returns 2 values => state (stateSnapshot) , dispatchFn (function to update state snapshot or dispatch a new action).
+    c. It takes in 3 argument => reducerFn (Action dispatched will be consumed by this argument, It gets the latest state snapshot automatically. It returns a new updated state) , initialState , initFn
+    d. The reducer function could be written outside the component.
+
+13. useContext: Instead of passing props from through multiple different component we can use context api.
+Context API is component wide, behind the scene state storage . This can be implemented in 2 ways, either pass value from a provider and cosume it by CreatedContext.Consumer. Or pass value from provider and use useContext method by react and pass the context to retrieve the value.
+Using Context is not a good idea for high frequency changes, since it is not optimised
+
+
+How React Works Behiend the scenes
+1. It uses virtual dom which is replica of real dom, and only the diff is updated
+2. To optimise performance we can use React.memo. Wrap a functional component around React.memo() while exporting and this will cause render only if props or state changes. This cannot be always used since react will have to store value of props and make comparison, this will also cause some performance cost, we trading the performance cost of re-evaluating the component for the performance cost of comparing props.
+
+
+14. useCallback: Use Callback is a hook that allows us to basically store a function across component executions. So it allows us to tell React that we wanna save a function and that this function should not be recreated with every execution.
